@@ -1,51 +1,30 @@
 function to_roman_old(n) {
-  // your code here
-  var textOutput = "";
+    // your code here
+    var textOutput = "";
+    var number = n;
+    var romArray = ["M", "D", "C", "L", "X", "V", "I"];
+    var numArray = [1000, 500, 100, 50, 10, 5, 1];
 
-  // Get M numerator
-  var romanM = Math.floor(n / 1000);
-  for (i = 0; i < romanM; i++) { textOutput += "M"; }
-  n = n % 1000;
+    for(var i = 0; i < romArray.length; i++) {
 
-  // Get D numerator
-  var romanD = Math.floor(n / 500);
-  for (i = 0; i < romanD; i++) { textOutput += "D"; }
-  n = n % 500;
+        // Get number of times numerator repeated
+        var numRepeat = Math.floor(number / numArray[i]);
 
-  // Get C numerator
-  var romanC = Math.floor(n / 100);
-  for (i = 0; i < romanC; i++) { textOutput += "C"; }
-  n = n % 100;
+        // Get roman numeral array
+        for(var j = 0; j < numRepeat; j++) {
+            textOutput += romArray[i];
+        }
 
-  // Get L numerator
-  var romanL = Math.floor(n / 50);
-  for (i = 0; i < romanL; i++) { textOutput += "L"; }
-  n = n % 50;
+        // Update number
+        number = number % numArray[i];
+    }
 
-  // Get X numerator
-  var romanX = Math.floor(n / 10);
-  for (i = 0; i < romanX; i++) { textOutput += "X"; }
-  n = n % 10;
-
-  // Get V numerator
-  var romanV = Math.floor(n / 5);
-  for (i = 0; i < romanV; i++) { textOutput += "V"; }
-  n = n % 5;
-
-  // Get I numerator
-  var romanI = n;
-  for (i = 0; i < romanI; i++) { textOutput += "I"; }
-
-  return textOutput;
+    return textOutput;
 }
 
 function to_roman(n) {
-  // your implementation code here
-  var textOutput = to_roman_old(n);
-
-  var newTextOutput = textOutput.replace("DCCCC", "CM").replace("CCCC", "CD").replace("LXXXX", "XC").replace("XXXX", "XL").replace("VIIII", "IX").replace("IIII", "IV");
-
-  return newTextOutput;
+    // Return value from to_roman_old, with replacements
+    return to_roman_old(n).replace("DCCCC", "CM").replace("CCCC", "CD").replace("LXXXX", "XC").replace("XXXX", "XL").replace("VIIII", "IX").replace("IIII", "IV");
 }
 
 // Drive code
