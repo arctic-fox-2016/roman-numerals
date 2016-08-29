@@ -1,9 +1,35 @@
 function to_roman_old(n) {
   // your code here
+  let roman = ["M","CM","D","CD","C","XC","L","XL","X","V","I"];
+  let decimal =[1000,900,500,400,100,90,50,40,10,5,1];
+  if (n <= 0 || n >= 3000) return n;
+      var romanNumeral = "";
+      for (var i=0; i<roman.length; i++) {
+        while (n >= decimal[i]) {
+          n -= decimal[i];
+          romanNumeral += roman[i];
+        }
+  }
+  return romanNumeral;
+
+
 }
 
 function to_roman(n) {
   // your implementation code here
+  let roman = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];
+  let decimal =[1000,900,500,400,100,90,50,40,10,9,5,4,1];
+  if (n <= 0 || n >= 3000) return n;
+      var romanNumeral = "";
+      for (var i=0; i<roman.length; i++) {
+        while (n >= decimal[i]) {
+          n -= decimal[i];
+          romanNumeral += roman[i];
+        }
+ }
+ return romanNumeral;
+
+ 
 }
 
 // Drive code
